@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"
     <meta charset="UTF-8">
+    <script th:src="@{/js/script.js}" defer></script>
     <title>Lista de Livros</title>
 </head>
 <body>
@@ -20,10 +22,44 @@
                 <tr th:each="Livro: ${listalivros}">
                     <td th:text="${livro.id}"> </td>
                     <td th:text="${livro.titulo}"> </td>
-                    <td>Ver</td>
+                    <td>
+                        <button th:attr="onclick|showModal(' + ${livro.id})|"></button>
+                            ver
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <div th:each="Livro: ${listalivros}"
+             th:attr="id=${'infoModal' + livro.id}"
+             style="display: none">
+            <p>
+                ID: <span th:text="${livro.id}"></span>
+                <br/>
+
+                Titulo: <span th:text="${livro.titulo}"></span>
+                <br/>
+
+                Autor: <span th:text="${livro.autor}"></span>
+                <br/>
+
+                Categoria: <span th:text="${livro.categoria}"></span>
+                <br/>
+
+                Preco: <span th:text="${livro.preco}"></span>
+                <br/>
+
+                DataPublicacao: <span th:text="${livro.dataPublicacao}"></span>
+                <br/>
+
+                ISBN: <span th:text="${livro.isbn}"></span>
+                <br/>
+
+            </p>
+            <button th:attr="onclick|hideModal('infoModal' + ${livro.id})|">
+                Fechar
+            </button>
+        </div>
     </div>
 </body>
 </html>
