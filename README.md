@@ -1,4 +1,4 @@
-# 🚀 Projeto Spring MVC Java
+# 📚 Projeto Spring MVC Java - Gestão de Livros
 
 ![Java](https://img.shields.io/badge/Java-17-red?logo=java&logoColor=white)
 ![Spring MVC](https://img.shields.io/badge/Spring-MVC-brightgreen?logo=spring&logoColor=white)
@@ -8,8 +8,9 @@
 ---
 
 ## 📖 Sobre o Projeto
-Este repositório contém uma aplicação desenvolvida em **Java com Spring MVC**, utilizando **Gradle** como ferramenta de build.  
-O objetivo é demonstrar a estrutura de um projeto web seguindo o padrão **MVC (Model-View-Controller)**, com boas práticas de organização e implementação.
+Este repositório contém uma aplicação web desenvolvida em **Java com Spring MVC**, utilizando **Gradle** como ferramenta de build.  
+
+O sistema implementa um CRUD simples para **gestão de livros**, com páginas web integradas ao Spring MVC seguindo o padrão **Model-View-Controller**.
 
 ---
 
@@ -17,8 +18,8 @@ O objetivo é demonstrar a estrutura de um projeto web seguindo o padrão **MVC 
 - **Java 17+**
 - **Spring MVC**
 - **Gradle**
-- **Thymeleaf / JSP (dependendo da view configurada)**
-- **HTML5 / CSS3**
+- **Thymeleaf** (views em HTML)
+- **HTML5 / CSS3 / JS**
 - **H2 Database (ou outro configurado)**
 
 ---
@@ -28,12 +29,19 @@ O objetivo é demonstrar a estrutura de um projeto web seguindo o padrão **MVC 
 spring-mvc-java/
 │── src/
 │   ├── main/
-│   │   ├── java/        # Código fonte (controllers, models, services)
-│   │   ├── resources/   # Arquivos de configuração
-│   │   └── webapp/      # Views (HTML/JSP)
-│── build.gradle         # Configurações do Gradle
-│── settings.gradle      # Configurações do projeto
-│── README.md            # Documentação
+│   │   ├── java/       
+│   │   │   └── br/com/fiap/spring/mvc/
+│   │   │       ├── controller/   # Controllers (ex: LivroController)
+│   │   │       ├── entity/       # Entidades (ex: Livro)
+│   │   │       ├── repository/   # Repositórios
+│   │   │       └── service/      # Serviços (ex: LivroService)
+│   │   ├── resources/   
+│   │   │   ├── static/           # Arquivos estáticos (CSS, JS)
+│   │   │   └── templates/        # Views (LivroLista.html, LivroCadastro.html)
+│   │   └── application.properties
+│── build.gradle         
+│── settings.gradle      
+│── README.md            
 ```
 
 ---
@@ -58,31 +66,27 @@ cd spring-mvc-java
 
 ---
 
-## 🌐 Endpoints Principais (Exemplo CRUD)
+## 🌐 Endpoints Implementados
 
-### 🏍️ MotoController
-- `GET /motos` → Listar todas as motos  
-- `GET /motos/{id}` → Buscar moto por ID  
-- `POST /motos` → Cadastrar nova moto  
-- `PUT /motos/{id}` → Atualizar moto existente  
-- `DELETE /motos/{id}` → Excluir moto  
+### 📚 LivroController
 
-### 📄 OcorrenciaController
-- `GET /ocorrencias` → Listar todas as ocorrências  
-- `GET /ocorrencias/{id}` → Buscar ocorrência por ID  
-- `POST /ocorrencias` → Registrar nova ocorrência  
-- `PUT /ocorrencias/{id}` → Atualizar ocorrência  
-- `DELETE /ocorrencias/{id}` → Excluir ocorrência  
+- `GET /livros/lista` → Listar todos os livros  
+- `GET /livros/cadastro` → Exibir formulário de cadastro  
+- `POST /livros/cadastro` → Salvar novo livro (com validação)  
+- `GET /livros/cadastro/{id}` → Editar livro existente  
 
-*(Ajuste conforme seus controllers e mapeamentos no código)*
+### 🖥️ Views
+- `LivroLista.html` → Página de listagem de livros  
+- `LivroCadastro.html` → Página de cadastro/edição de livro  
 
 ---
 
 ## ✅ Melhorias Futuras
-- Integração com **Spring Boot** para simplificar configuração
-- Autenticação e Autorização com **Spring Security**
-- Testes automatizados com **JUnit e Mockito**
-- Deploy em nuvem (Heroku / Azure / AWS)
+- Validações adicionais de formulário  
+- Implementar paginação e ordenação de livros  
+- Adicionar exclusão de livros (`DELETE`)  
+- Testes unitários com JUnit e Mockito  
+- Deploy em nuvem (Heroku, Azure ou AWS)  
 
 ---
 
